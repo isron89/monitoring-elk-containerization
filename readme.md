@@ -1,38 +1,89 @@
-Changes Made:
-Added Kafka and Zookeeper services (docker-compose.yml:4-40)
+# KKW Monitoring System
 
-Zookeeper on port 2181
-Kafka on ports 9092 (internal) and 9093 (external/localhost)
-Auto-create topics enabled
-Added persistent volumes for data storage
-Updated Logstash configuration (logstash.conf:3)
+A real-time telemetry monitoring solution using the ELK Stack (Elasticsearch, Logstash, Kibana) integrated with Apache Kafka for streaming data ingestion.
 
-Changed Kafka connection from "YOUR_GCP_KAFKA:9092" to "kafka:9092"
-Now connects to the local Kafka instance
-Updated Logstash service (docker-compose.yml:82)
+## Purpose
 
-Added dependency on Kafka to ensure proper startup order
-Fixed filename typo
+This monitoring system collects, processes, and visualizes telemetry data from operational systems, enabling real-time performance tracking and analysis. It identifies slow requests (execution time > 3000ms) and stores time-series data for historical analysis.
 
-Renamed docker-dompose.yml → docker-compose.yml
-How to Use:
-Start all services:
+## Architecture Components
+
+### Data Streaming Layer
+- **Apache Kafka** (Ports 9092/9093): Message broker for reliable telemetry data ingestion
+- **Zookeeper** (Port 2181): Manages Kafka cluster coordination
+
+### Data Processing Layer
+- **Logstash**: Consumes telemetry messages from Kafka topic `telemetry-topic`, performs data transformation, filters invalid records, and enriches slow request markers
+
+### Storage Layer
+- **Elasticsearch** (Port 9200): Time-series database with daily indices (`telemetry-YYYY.MM.dd`) for efficient data storage and retrieval
+
+### Visualization Layer
+- **Kibana** (Port 5601): Web-based dashboard for data visualization and analysis
+
+## Key Features
+
+- Real-time telemetry data processing from Kafka streams
+- Automatic slow request detection (>3s execution time)
+- ISO8601 timestamp normalization
+- Daily indexed data storage for efficient querying
+- Persistent data volumes for all services
+- Health checks and automatic service restart
+- Secured Elasticsearch with authentication (elastic/password)
+
+## Data Flow
+
+1. Telemetry data published to Kafka `telemetry-topic`
+2. Logstash consumes messages and validates required fields (tranTime)
+3. Filters and enriches data (marks slow requests)
+4. Stores processed data in Elasticsearch daily indices
+5. Kibana provides visualization and querying interface
+
+## Getting Started
+
+### Prerequisites
+- Docker and Docker Compose installed
+
+### Start All Services
+```bash
 docker-compose up -d
+```
 
-Create the telemetry topic (if not auto-created):
-docker exec -it kafka kafka-topics --create --topic telemetry-topic-test --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+### Create the Telemetry Topic
+If not auto-created:
+```bash
+docker exec -it kafka kafka-topics --create --topic telemetry-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+```
 
-Test by producing a message:
-docker exec -it kafka kafka-console-producer --topic telemetry-topic-test --bootstrap-server localhost:9092
+### Test the Pipeline
+Produce a test message:
+```bash
+docker exec -it kafka kafka-console-producer --topic telemetry-topic --bootstrap-server localhost:9092
+```
 
-Then paste a JSON message like:
+Then paste a JSON message:
+```json
 {"tranTime":"2024-02-15T10:00:00Z","executeTime":1500,"message":"test"}
+```
 
-Check the logs:
+### Access Services
 
-Access the services:
+- **Kafka**: localhost:9093
+- **Elasticsearch**: http://localhost:9200 (elastic/password)
+- **Kibana**: http://localhost:5601
 
-Kafka: localhost:9093
-Elasticsearch: http://localhost:9200 (elastic/password)
-Kibana: http://localhost:5601
-Your complete monitoring stack is now ready with local Kafka integration!
+## Monitoring
+
+Check service logs:
+```bash
+docker-compose logs -f [service-name]
+```
+
+View all running services:
+```bash
+docker-compose ps
+```
+
+## Technical Details
+
+This containerized solution provides a complete, production-ready monitoring infrastructure for tracking application performance metrics and telemetry data.
