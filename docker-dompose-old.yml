@@ -46,7 +46,7 @@ services:
       - discovery.type=single-node
       - ES_JAVA_OPTS=-Xms1g -Xmx1g
       - xpack.security.enabled=true
-      - ELASTIC_PASSWORD=pertamina
+      - ELASTIC_PASSWORD=password
     ports:
       - "9200:9200"
     volumes:
@@ -66,7 +66,7 @@ services:
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
       - ELASTICSEARCH_USERNAME=elastic
-      - ELASTICSEARCH_PASSWORD=pertamina
+      - ELASTICSEARCH_PASSWORD=password
     depends_on:
       - elasticsearch
     restart: unless-stopped

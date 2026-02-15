@@ -33,6 +33,6 @@ Check the logs:
 Access the services:
 
 Kafka: localhost:9093
-Elasticsearch: http://localhost:9200 (elastic/pertamina)
+Elasticsearch: http://localhost:9200 (elastic/password)
 Kibana: http://localhost:5601
 Your complete monitoring stack is now ready with local Kafka integration!
