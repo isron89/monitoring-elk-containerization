@@ -1,4 +1,4 @@
-# KKW Monitoring System
+# ELK Monitoring System
 
 A real-time telemetry monitoring solution using the ELK Stack (Elasticsearch, Logstash, Kibana) integrated with Apache Kafka for streaming data ingestion.
 
