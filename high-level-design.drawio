@@ -1,0 +1,183 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.4.0">
+  <diagram name="High Level Design" id="hld">
+    <mxGraphModel dx="933" dy="597" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontStyle=1;fontColor=#000000;" value="High Level Design - Sentralisasi Monitoring Sistem" vertex="1">
+          <mxGeometry height="50" width="700" x="350" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontColor=#666666;" value="Real-time Telemetry Data Processing &amp; Visualization Platform" vertex="1">
+          <mxGeometry height="30" width="700" x="350" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="external-layer" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#01579B;fontSize=16;fontStyle=1;strokeWidth=3;" value="EXTERNAL SYSTEMS" vertex="1">
+          <mxGeometry height="720" width="550" x="40" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="kafka-cluster-box" parent="external-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;verticalAlign=top;fontSize=14;fontStyle=1;align=center;strokeWidth=2;" value="Apache Kafka Server (External)" vertex="1">
+          <mxGeometry height="280" width="470" x="40" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="kafka-server" parent="external-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;strokeColor=#0D47A1;fontSize=12;fontColor=#FFFFFF;verticalAlign=top;strokeWidth=2;" value="&lt;b style=&quot;font-size: 14px;&quot;&gt;Kafka Broker&lt;/b&gt;&lt;br&gt;&lt;br&gt;Mode: KRaft (Standalone)&lt;br&gt;Node ID: 1&lt;br&gt;Version: 4.1.1" vertex="1">
+          <mxGeometry height="120" width="200" x="70" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="kafka-topics" parent="external-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1976D2;strokeColor=#0D47A1;fontSize=11;fontColor=#FFFFFF;verticalAlign=top;" value="&lt;b&gt;Topics&lt;/b&gt;&lt;br&gt;&lt;br&gt;• telemetry-topic&lt;br&gt;  - Partitions: 1&lt;br&gt;  - Replication: 1" vertex="1">
+          <mxGeometry height="100" width="200" x="290" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="kafka-listeners-box" parent="external-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;fontSize=12;fontStyle=1;verticalAlign=top;strokeWidth=2;" value="&lt;b&gt;Network Listeners&lt;/b&gt;" vertex="1">
+          <mxGeometry height="70" width="420" x="70" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="listener-1" parent="external-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;fontSize=10;fontStyle=1;" value="PLAINTEXT&lt;br&gt;localhost:9092&lt;br&gt;(Local)" vertex="1">
+          <mxGeometry height="30" width="100" x="90" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="listener-2" parent="external-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#1B5E20;fontSize=10;fontStyle=1;" value="DOCKER&lt;br&gt;host.docker.internal:9094&lt;br&gt;(Docker Access)" vertex="1">
+          <mxGeometry height="30" width="150" x="210" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="listener-3" parent="external-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#4A148C;fontSize=10;fontStyle=1;" value="CONTROLLER&lt;br&gt;localhost:9093" vertex="1">
+          <mxGeometry height="30" width="90" x="380" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="app-producers-box" parent="external-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;verticalAlign=top;fontSize=14;fontStyle=1;align=center;strokeWidth=2;" value="Application Layer" vertex="1">
+          <mxGeometry height="180" width="470" x="40" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="producer-1" parent="external-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#1B5E20;fontSize=11;fontColor=#FFFFFF;" value="&lt;b&gt;Microservice A&lt;/b&gt;&lt;br&gt;Telemetry Producer" vertex="1">
+          <mxGeometry height="60" width="130" x="70" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="producer-2" parent="external-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#1B5E20;fontSize=11;fontColor=#FFFFFF;" value="&lt;b&gt;Microservice B&lt;/b&gt;&lt;br&gt;Telemetry Producer" vertex="1">
+          <mxGeometry height="60" width="130" x="220" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="producer-3" parent="external-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#1B5E20;fontSize=11;fontColor=#FFFFFF;" value="&lt;b&gt;Microservice C&lt;/b&gt;&lt;br&gt;Telemetry Producer" vertex="1">
+          <mxGeometry height="60" width="130" x="370" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="producer-note" parent="external-layer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontSize=10;align=left;verticalAlign=top;fontColor=#333333;" value="Applications publish telemetry data:&lt;br&gt;• Transaction time (tranTime)&lt;br&gt;• Execution time (executeTime)&lt;br&gt;• Additional metadata" vertex="1">
+          <mxGeometry height="50" width="430" x="70" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="users-box" parent="external-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#E65100;verticalAlign=top;fontSize=14;fontStyle=1;align=center;strokeWidth=2;" value="Users &amp; Administrators" vertex="1">
+          <mxGeometry height="120" width="470" x="40" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="admin-user" parent="external-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9800;strokeColor=#E65100;fontSize=11;fontColor=#FFFFFF;shape=umlActor;" value="&lt;span&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;b style=&quot;&quot;&gt;Administrator&lt;/b&gt;&lt;br&gt;System Monitoring&lt;/font&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="80" x="100" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="analyst-user" parent="external-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9800;strokeColor=#E65100;fontSize=11;fontColor=#FFFFFF;shape=umlActor;" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;Data Analyst&lt;/b&gt;&lt;br&gt;Dashboard Viewer&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="80" x="230" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="dev-user" parent="external-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF9800;strokeColor=#E65100;fontSize=11;fontColor=#FFFFFF;shape=umlActor;" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;b&gt;Developer&lt;/b&gt;&lt;br&gt;Troubleshooting&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="80" x="360" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="docker-layer" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#C2185B;fontSize=16;fontStyle=1;strokeWidth=3;" value="DOCKER PLATFORM (monitoring_default network)" vertex="1">
+          <mxGeometry height="720" width="720" x="640" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="processing-layer-box" parent="docker-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F57F17;verticalAlign=top;fontSize=14;fontStyle=1;align=center;strokeWidth=2;" value="Data Processing Layer" vertex="1">
+          <mxGeometry height="200" width="640" x="40" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="logstash-container" parent="docker-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEB3B;strokeColor=#F57F17;fontSize=12;fontStyle=1;verticalAlign=top;strokeWidth=2;" value="&lt;b&gt;Logstash Container&lt;/b&gt;" vertex="1">
+          <mxGeometry height="140" width="580" x="70" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="logstash-input" parent="docker-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDD835;strokeColor=#F57F17;fontSize=10;" value="&lt;b&gt;Input Plugin&lt;/b&gt;&lt;br&gt;&lt;br&gt;Kafka Consumer&lt;br&gt;Topic: telemetry-topic&lt;br&gt;Group: telemetry-monitor" vertex="1">
+          <mxGeometry height="90" width="140" x="90" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="logstash-filter" parent="docker-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDD835;strokeColor=#F57F17;fontSize=10;" value="&lt;b&gt;Filter Pipeline&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Validate tranTime&lt;br&gt;• Detect slow requests&lt;br&gt;• Field mapping&lt;br&gt;• Drop invalid records" vertex="1">
+          <mxGeometry height="90" width="160" x="250" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="logstash-output" parent="docker-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDD835;strokeColor=#F57F17;fontSize=10;" value="&lt;b&gt;Output Plugin&lt;/b&gt;&lt;br&gt;&lt;br&gt;Elasticsearch Writer&lt;br&gt;Index Pattern:&lt;br&gt;telemetry-YYYY.MM.dd" vertex="1">
+          <mxGeometry height="90" width="200" x="430" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="storage-layer-box" parent="docker-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;verticalAlign=top;fontSize=14;fontStyle=1;align=center;strokeWidth=2;" value="Storage Layer" vertex="1">
+          <mxGeometry height="200" width="640" x="40" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="elasticsearch-container" parent="docker-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2196F3;strokeColor=#0D47A1;fontSize=12;fontStyle=1;verticalAlign=top;strokeWidth=2;fontColor=#FFFFFF;" value="&lt;b&gt;Elasticsearch Container&lt;/b&gt;" vertex="1">
+          <mxGeometry height="140" width="580" x="70" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="es-cluster" parent="docker-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1976D2;strokeColor=#0D47A1;fontSize=10;fontColor=#FFFFFF;" value="&lt;b&gt;ES Cluster&lt;/b&gt;&lt;br&gt;&lt;br&gt;Mode: Single Node&lt;br&gt;Port: 9200&lt;br&gt;Auth: elastic/pertamina" vertex="1">
+          <mxGeometry height="80" width="140" x="90" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="es-indices" parent="docker-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1976D2;strokeColor=#0D47A1;fontSize=10;fontColor=#FFFFFF;" value="&lt;b&gt;Indices&lt;/b&gt;&lt;br&gt;&lt;br&gt;telemetry-2026.02.15&lt;br&gt;telemetry-2026.02.16&lt;br&gt;telemetry-2026.02.17&lt;br&gt;..." vertex="1">
+          <mxGeometry height="80" width="160" x="250" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="es-volume" parent="docker-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1976D2;strokeColor=#0D47A1;fontSize=10;fontColor=#FFFFFF;" value="&lt;b&gt;Persistent Volume&lt;/b&gt;&lt;br&gt;&lt;br&gt;Volume: esdata&lt;br&gt;Type: Docker Volume&lt;br&gt;Purpose: Data persistence" vertex="1">
+          <mxGeometry height="80" width="200" x="430" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="visualization-layer-box" parent="docker-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#388E3C;verticalAlign=top;fontSize=14;fontStyle=1;align=center;strokeWidth=2;" value="Visualization Layer" vertex="1">
+          <mxGeometry height="180" width="640" x="40" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="kibana-container" parent="docker-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#1B5E20;fontSize=12;fontStyle=1;verticalAlign=top;strokeWidth=2;fontColor=#FFFFFF;" value="&lt;b&gt;Kibana Container&lt;/b&gt;" vertex="1">
+          <mxGeometry height="120" width="580" x="70" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="kibana-features" parent="docker-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66BB6A;strokeColor=#1B5E20;fontSize=10;fontColor=#FFFFFF;" value="&lt;b&gt;Features&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Real-time Dashboards&lt;br&gt;• Custom Visualizations&lt;br&gt;• Query Builder" vertex="1">
+          <mxGeometry height="70" width="200" x="90" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="kibana-access" parent="docker-layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66BB6A;strokeColor=#1B5E20;fontSize=10;fontColor=#FFFFFF;" value="&lt;b&gt;Web Interface&lt;/b&gt;&lt;br&gt;&lt;br&gt;Port: 5601&lt;br&gt;URL: http://localhost:5601&lt;br&gt;Auth: Via Elasticsearch" vertex="1">
+          <mxGeometry height="70" width="310" x="320" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="flow-producers-kafka" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=4;fontSize=11;fillColor=#C8E6C9;strokeColor=#388E3C;fontStyle=1;entryX=0.392;entryY=1.022;entryDx=0;entryDy=0;entryPerimeter=0;" target="kafka-listeners-box" value="Publish Telemetry&lt;br&gt;(JSON)">
+          <mxGeometry relative="1" x="-0.1812" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="275" y="480" as="sourcePoint" />
+            <mxPoint x="275" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow-kafka-logstash" edge="1" parent="1" source="kafka-listeners-box" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=5;fontSize=11;fillColor=#FFF9C4;strokeColor=#F57F17;fontStyle=1;" value="Stream Data&lt;br&gt;host.docker.internal:9094&lt;br&gt;Consumer Group: telemetry-monitor">
+          <mxGeometry relative="1" x="-0.0491" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="650" y="405" />
+              <mxPoint x="650" y="280" />
+            </Array>
+            <mxPoint x="520" y="400" as="sourcePoint" />
+            <mxPoint x="710" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow-logstash-es" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=4;fontSize=11;fillColor=#BBDEFB;strokeColor=#1976D2;fontStyle=1;" value="Write Processed Data&lt;br&gt;Auth: logstash_writer">
+          <mxGeometry relative="1" x="-0.3882" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="1000" y="350" as="sourcePoint" />
+            <mxPoint x="1000" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow-es-kibana" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;fontSize=11;fillColor=#C8E6C9;strokeColor=#388E3C;fontStyle=1;startArrow=classic;startFill=1;" value="Query Data&lt;br&gt;REST API">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="1000" y="630" as="sourcePoint" />
+            <mxPoint x="1000" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="flow-users-kibana" edge="1" parent="1" source="users-box" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=3;fontSize=11;fillColor=#FFE0B2;strokeColor=#E65100;fontStyle=1;startArrow=classic;startFill=1;exitX=0.994;exitY=0.561;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.004;entryY=0.722;entryDx=0;entryDy=0;entryPerimeter=0;" target="kibana-container" value="HTTPS/HTTP&lt;br&gt;Browser Access">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="760" as="sourcePoint" />
+            <mxPoint x="950" y="760" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="support-box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#616161;verticalAlign=top;fontSize=12;fontStyle=1;align=left;spacingLeft=10;spacingTop=5;strokeWidth=2;" value="&lt;b&gt;SUPPORTING SERVICES&lt;/b&gt;" vertex="1">
+          <mxGeometry height="100" width="550" x="40" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="setup-service" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9E9E9E;strokeColor=#424242;fontSize=10;fontColor=#FFFFFF;" value="&lt;b&gt;Setup Container&lt;/b&gt;&lt;br&gt;One-time initialization&lt;br&gt;Creates ES users" vertex="1">
+          <mxGeometry height="50" width="150" x="60" y="895" as="geometry" />
+        </mxCell>
+        <mxCell id="monitoring-service" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9E9E9E;strokeColor=#424242;fontSize=10;fontColor=#FFFFFF;" value="&lt;b&gt;Health Checks&lt;/b&gt;&lt;br&gt;Container monitoring&lt;br&gt;Service dependencies" vertex="1">
+          <mxGeometry height="50" width="150" x="230" y="895" as="geometry" />
+        </mxCell>
+        <mxCell id="network-service" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9E9E9E;strokeColor=#424242;fontSize=10;fontColor=#FFFFFF;" value="&lt;b&gt;Docker Network&lt;/b&gt;&lt;br&gt;Internal DNS&lt;br&gt;Service discovery" vertex="1">
+          <mxGeometry height="50" width="170" x="400" y="895" as="geometry" />
+        </mxCell>
+        <mxCell id="tech-specs-box" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;verticalAlign=top;fontSize=12;fontStyle=1;align=left;spacingLeft=10;spacingTop=5;strokeWidth=2;" value="&lt;b&gt;TECHNICAL SPECIFICATIONS&lt;/b&gt;" vertex="1">
+          <mxGeometry height="110" width="720" x="640" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="tech-stack" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontSize=10;align=left;verticalAlign=top;" value="&lt;b&gt;Technology Stack&lt;/b&gt;&lt;br&gt;• Kafka: 4.1.1 (KRaft)&lt;br&gt;• Elasticsearch: 8.12.0&lt;br&gt;• Logstash: 8.12.0&lt;br&gt;• Kibana: 8.12.0" vertex="1">
+          <mxGeometry height="50" width="180" x="660" y="895" as="geometry" />
+        </mxCell>
+        <mxCell id="data-flow-specs" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontSize=10;align=left;verticalAlign=top;" value="&lt;b&gt;Data Flow&lt;/b&gt;&lt;br&gt;• Format: JSON&lt;br&gt;• Codec: json (ECS disabled)&lt;br&gt;• Auto-commit: Enabled&lt;br&gt;• Offset: Latest" vertex="1">
+          <mxGeometry height="50" width="180" x="803" y="895" as="geometry" />
+        </mxCell>
+        <mxCell id="performance-specs" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontSize=10;align=left;verticalAlign=top;" value="&lt;b&gt;Performance&lt;/b&gt;&lt;br&gt;• Slow Request: &gt;3000ms&lt;br&gt;• Index Pattern: Daily&lt;br&gt;• Retention: Configurable&lt;br&gt;• Partitions: 1" vertex="1">
+          <mxGeometry height="50" width="180" x="967" y="895" as="geometry" />
+        </mxCell>
+        <mxCell id="security-specs" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontSize=10;align=left;verticalAlign=top;" value="&lt;b&gt;Security&lt;/b&gt;&lt;br&gt;• ES Auth: Basic (elastic/pertamina)&lt;br&gt;• Logstash User: logstash_writer&lt;br&gt;• Network: Isolated Docker network&lt;br&gt;• Kafka: PLAINTEXT (upgrade SSL recommended)" vertex="1">
+          <mxGeometry height="50" width="280" x="1117" y="895" as="geometry" />
+        </mxCell>
+        <mxCell id="stbEGKI9vLsOwKtz8Gb5-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=5;" value="1. Aplikasi mengirim telemetry data ke Kafka topic&lt;div&gt;2. Logstash consume dari Kafka via Docker listener&lt;/div&gt;&lt;div&gt;3. Logstash filter and validasi data&lt;/div&gt;&lt;div&gt;4. Data disimpan dalam Elasticsearch by timeseries&lt;/div&gt;&lt;div&gt;5. Kibana visualisasi data dari Elasticsearch&lt;/div&gt;&lt;div&gt;6. Users akses dashboard via browser&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="280" x="40" y="1020" as="geometry" />
+        </mxCell>
+        <mxCell id="stbEGKI9vLsOwKtz8Gb5-2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" value="&lt;b&gt;Data Flow Process&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="190" x="10" y="990" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
