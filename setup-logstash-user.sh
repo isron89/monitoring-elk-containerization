@@ -23,11 +23,11 @@ echo "Creating logstash_writer role with proper permissions..."
 curl -X POST -u elastic:pertamina "http://elasticsearch:9200/_security/role/logstash_writer" \
   -H "Content-Type: application/json" \
   -d '{
-    "cluster": ["manage_index_templates", "monitor", "manage_ilm"],
+    "cluster": ["manage_index_templates", "monitor", "manage_ilm", "read_ilm"],
     "indices": [
       {
-        "names": ["telemetry-*", "logstash-*"],
-        "privileges": ["write", "create", "create_index", "manage", "manage_ilm"]
+        "names": ["telemetry-*", "logstash-*", "mypertamina-*"],
+        "privileges": ["write", "create", "create_index", "manage", "manage_ilm", "view_index_metadata"]
       }
     ]
   }'

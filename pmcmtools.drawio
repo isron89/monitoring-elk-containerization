@@ -1,0 +1,52 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36" version="29.4.0">
+  <diagram name="Page-1" id="7hB2Mmg3Q50Zf-mhnICN">
+    <mxGraphModel dx="1244" dy="796" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Dty-tPuAKXBGyuJbcDr4-8" edge="1" parent="1" source="Dty-tPuAKXBGyuJbcDr4-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Dty-tPuAKXBGyuJbcDr4-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Dty-tPuAKXBGyuJbcDr4-9" edge="1" parent="1" source="Dty-tPuAKXBGyuJbcDr4-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Dty-tPuAKXBGyuJbcDr4-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Dty-tPuAKXBGyuJbcDr4-10" edge="1" parent="1" source="Dty-tPuAKXBGyuJbcDr4-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Dty-tPuAKXBGyuJbcDr4-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Dty-tPuAKXBGyuJbcDr4-2" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="EoS" vertex="1">
+          <mxGeometry height="60" width="30" x="250" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="Dty-tPuAKXBGyuJbcDr4-4" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="View Dashboard" vertex="1">
+          <mxGeometry height="80" width="120" x="400" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="Dty-tPuAKXBGyuJbcDr4-5" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Tambah Pendataan" vertex="1">
+          <mxGeometry height="80" width="120" x="400" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="Dty-tPuAKXBGyuJbcDr4-6" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Detail Pendataan" vertex="1">
+          <mxGeometry height="80" width="120" x="400" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="Dty-tPuAKXBGyuJbcDr4-17" edge="1" parent="1" source="Dty-tPuAKXBGyuJbcDr4-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Dty-tPuAKXBGyuJbcDr4-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Dty-tPuAKXBGyuJbcDr4-23" edge="1" parent="1" source="Dty-tPuAKXBGyuJbcDr4-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Dty-tPuAKXBGyuJbcDr4-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Dty-tPuAKXBGyuJbcDr4-13" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Admin region" vertex="1">
+          <mxGeometry height="60" width="30" x="260" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="Dty-tPuAKXBGyuJbcDr4-16" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="User management" vertex="1">
+          <mxGeometry height="80" width="120" x="400" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Dty-tPuAKXBGyuJbcDr4-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="master data lokasi" vertex="1">
+          <mxGeometry height="60" width="120" x="80" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="Dty-tPuAKXBGyuJbcDr4-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="master data pulau &amp;amp; pompa, merk dispenser" vertex="1">
+          <mxGeometry height="60" width="120" x="80" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="Dty-tPuAKXBGyuJbcDr4-22" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="View Dashboard" vertex="1">
+          <mxGeometry height="80" width="120" x="400" y="160" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
